@@ -13,6 +13,7 @@ namespace UnityStandardAssets._2D
         private Transform m_InFrontOfCheck;
         private float k_FrontRadius = 0.02f;
         private bool isRunningLeft;
+        public int health = 5;
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
@@ -50,6 +51,21 @@ namespace UnityStandardAssets._2D
                     break;                    
                 }
 
+            }
+        }
+
+        void OnCollisionEnter2D(Collision2D collision) {
+               Debug.Log(collision.gameObject.tag);
+            if(collision.gameObject.tag.Equals("bullet"))
+            {
+                Debug.Log(collision.gameObject);
+       
+                Destroy(collision.gameObject);
+                health--;
+            }   
+            if(health == 0)
+            {
+                Destroy(gameObject);
             }
         }
     }

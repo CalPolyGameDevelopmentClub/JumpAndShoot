@@ -26,8 +26,5 @@ public class Platform2DProjectile : MonoBehaviour {
 		m_direction = dir;
 	}
 
-	void OnCollisionEnter()
-	{
-		Destroy(gameObject);
-	}
+
 }
